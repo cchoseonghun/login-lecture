@@ -12,8 +12,6 @@ const id = document.querySelector('#id'),
             psword: psword.value
         };
 
-        console.log('test: ' + req);
-
         fetch('/login', {
             method: 'POST', 
             headers: {

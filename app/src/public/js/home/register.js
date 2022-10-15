@@ -1,18 +1,22 @@
 'use strict';
 
 const id = document.querySelector('#id'), 
+    name = document.querySelector('#name'), 
     psword = document.querySelector('#psword'), 
-    loginBtn = document.querySelector('#button');
+    confirmPsword = document.querySelector('#confirm-psword'), 
+    registerBtn = document.querySelector('#button');
+    console.log('hello register')
+    registerBtn.addEventListener('click', register);
 
-    loginBtn.addEventListener('click', login);
-
-    function login(){
+    function register(){
         const req = {
             id: id.value, 
-            psword: psword.value
+            name: name.value, 
+            psword: psword.value, 
+            confirmPsword: confirmPsword.value, 
         };
 
-        fetch('/login', {
+        fetch('/register', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json', 
@@ -21,18 +25,14 @@ const id = document.querySelector('#id'),
         })
         // console.log로 찍어보면 Promise가 반환됨
         .then((res) => res.json()) 
-        // Promise는 then을 통해 접근할 수 있음
-        // .then((res) => console.log(res));  
-        // parameter로 넘기는 값을 어떠한 함수 안에 다시 parameter로 넘길 때 생략가능
-        // .then(console.log);  // 이렇게
         .then((res) => {
             if(res.success){
-                location.href="/";
+                location.href="/login";
             } else {
                 alert(res.msg);
             }
         })
         .catch((err) => {
-            console.error(new Error('로그인 중 에러 발생'));
+            console.error(new Error('회원가입 중 에러 발생'));
         })
     }

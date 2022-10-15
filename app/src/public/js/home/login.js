@@ -28,6 +28,13 @@ const id = document.querySelector('#id'),
         // parameter로 넘기는 값을 어떠한 함수 안에 다시 parameter로 넘길 때 생략가능
         // .then(console.log);  // 이렇게
         .then((res) => {
-
-        });
+            if(res.success){
+                location.href="/";
+            } else {
+                alert(res.msg);
+            }
+        })
+        .catch((err) => {
+            console.error(new Error('로그인 중 에러 발생'));
+        })
     }

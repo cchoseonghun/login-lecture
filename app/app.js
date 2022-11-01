@@ -2,9 +2,9 @@
 
 // 모듈
 const express = require('express');
-const app = express();
-
 const dotenv = require('dotenv');
+
+const app = express();
 dotenv.config();
 
 // 라우팅
